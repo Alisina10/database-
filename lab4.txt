@@ -1,0 +1,338 @@
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mpsql -h localhost -p 5432 -U postgres -d postg[7mr[7mes[27m[K
+[K[A[A[34C[27mp[27ms[27mq[27ml[27m [27m-[27mh[27m [27ml[27mo[27mc[27ma[27ml[27mh[27mo[27ms[27mt[27m [27m-[27mp[27m [27m5[27m4[27m3[27m2[27m [27m-[27mU[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[27m [27m-[27md[27m [27mp[27mo[27ms[27mt[27mgr[27me[27ms[1B[K[?2004l
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+[?2004hpostgres=# [7mCREATE DATABASE lab4db;[27m
+[7m\c lab4db[27m[A[C[CCREATE DATABASE lab4db;
+\c lab4db
+[?2004lCREATE DATABASE
+You are now connected to database "lab4db" as user "postgres".
+[?2004hlab4db=# [7m-- students table[27m
+[7mCREATE TABLE students ([27m
+[7m    student_id SERIAL PRIMARY KEY,[27m
+[7m    name       VARCHAR(50),[27m
+[7m    email      VARCHAR(100),[27m
+[7m    faculty    VARCHAR(20)[27m
+[7m);[27m
+
+[7m-- sample rows (names from your doc)[27m
+[7mINSERT INTO students (name, email, faculty) VALUES[27m
+[7m('Alymbek', 'alymbek@example.com', 'COM-25'),[27m
+[7m('Timur',   'timur@example.com',   'COM-25'),[27m
+[7m('Beka',    'beka@example.com',    'COM-25');[27m
+[A[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C-- students table
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    name       VARCHAR(50),
+    email      VARCHAR(100),
+    faculty    VARCHAR(20)
+);
+
+-- sample rows (names from your doc)
+INSERT INTO students (name, email, faculty) VALUES
+('Alymbek', 'alymbek@example.com', 'COM-25'),
+('Timur',   'timur@example.com',   'COM-25'),
+('Beka',    'beka@example.com',    'COM-25');
+[A
+[?2004lCREATE TABLE
+INSERT 0 3
+[?2004hlab4db=# [7m\dt[27m
+[7m\d students[27m
+[A[A[C[C[C[C[C[C[C[C[C\dt
+\d students
+[A
+[?2004l          List of relations
+ Schema |   Name   | Type  |  Owner   
+--------+----------+-------+----------
+ public | students | table | postgres
+(1 row)
+
+[?1h=                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+------------------- ---------------------------
+ student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass)
+ name       | character varying(50)  |           |          | 
+ email      | character varying(100) |           |          | 
+ faculty    | character varying(20)  |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+
+[7m(END)[27m[K[K[7m(END)[27m[K[KExamine: [KLL[KEE[KCC[KTT[K  [Knn[Kaa[Kmm[Kee[K,,[K  [Kee[Kmm[Kaa[Kii[Kll[K  [KFF[KRR[KOO[KMM[K  [Kss[Ktt[Kuu[Kdd[Kee[Knn[Ktt[Kss[K  [KWW[KHH[KEE[KRR[KEE[K  [Kff[Kaa[Kcc[Kuu[Kll[Ktt[Kyy[K  [K==[K  [K''[KCC[KOO[KMM[K--[K22[K55[K''[K;;[K...skipping...
+                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+------------------- ---------------------------
+ student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass)
+ name       | character varying(50)  |           |          | 
+ email      | character varying(100) |           |          | 
+ faculty    | character varying(20)  |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[K[7mLECT: No such file or directory  (press RETURN)[27m[24;1H[K[K[7mname,: No such file or directory  (press RETURN)[27m[24;1H[K[K[7memail: No such file or directory  (press RETURN)[27m[24;1H[K[K[7mFROM: No such file or directory  (press RETURN)[27m[24;1H[K[K[7mstudents: No such file or directory  (press RETURN)[27m[24;1H[K[K[7mWHERE: No such file or directory  (press RETURN)[27m[24;1H[K[K[7mfaculty: No such file or directory  (press RETURN)[27m[24;1H[K[K[7m=: No such file or directory  (press RETURN)[27m[24;1H[K[K[7mCOM-25: No such file or directory  (press RETURN)[27m[24;1H[K...skipping...
+                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+------------------- ---------------------------
+ student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass)
+ name       | character varying(50)  |           |          | 
+ email      | character varying(100) |           |          | 
+ faculty    | character varying(20)  |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[K [KESCESC[KBB[K [KESCESC[KBB[K [KESCESC[KESCESC[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[?1l>[?2004hlab4db=# \dt
+\d students[A-- students table
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    name       VARCHAR(50),
+    email      VARCHAR(100),
+    faculty    VARCHAR(20)
+);
+
+-- sample rows (names from your doc)
+INSERT INTO students (name, email, faculty) VALUES
+('Alymbek', 'alymbek@example.com', 'COM-25'),
+('Timur',   'timur@example.com',   'COM-25'),
+('Beka',    'beka@example.com',    'COM-25');[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C\dt              
+[12P\d students
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[A[K
+[K[A[C[C[C[C[C[C[C[C[C\dt
+\d students[A-- students table
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    name       VARCHAR(50),
+    email      VARCHAR(100),
+    faculty    VARCHAR(20)
+);
+
+-- sample rows (names from your doc)
+INSERT INTO students (name, email, faculty) VALUES
+('Alymbek', 'alymbek@example.com', 'COM-25'),
+('Timur',   'timur@example.com',   'COM-25'),
+('Beka',    'beka@example.com',    'COM-25');[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[CCREATE DATABASE lab4db;
+[14P\c lab4db
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[A\q[K
+[K[A[C[C[C[C[C[C[C[C[C[C[Cd coursesq[KCREATE DATABASE lab4db;
+\c lab4db[A\q[K
+[K[A[C[C[C[C[C[C[C[C[C[C[Cd courses
+[?2004lDid not find any relation named "courses".
+[?2004hlab4db=# \d coursest       
+\d students
+[?2004l          List of relations
+ Schema |   Name   | Type  |  Owner   
+--------+----------+-------+----------
+ public | students | table | postgres
+(1 row)
+
+[?1h=                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+------------------- ---------------------------
+ student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass)
+ name       | character varying(50)  |           |          | 
+ email      | character varying(100) |           |          | 
+ faculty    | character varying(20)  |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+
+[7m(END)[27m[K[K[7m(END)[27m[K[K[K[?1l>[?2004hlab4db=# t
+[?2004l[?2004hlab4db-# \d students
+[?2004l[?1h=                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+------------------- ---------------------------
+ student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass)
+ name       | character varying(50)  |           |          | 
+ email      | character varying(100) |           |          | 
+ faculty    | character varying(20)  |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+
+[7m(END)[27m[K[K [KESCESC[KOO[KAA[K...skipping...
+                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+------------------- ---------------------------
+ student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass)
+ name       | character varying(50)  |           |          | 
+ email      | character varying(100) |           |          | 
+ faculty    | character varying(20)  |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[?1l>[?2004hlab4db-# [7m\dt[27m
+[7m\d students[27m
+[A[A[C[C[C[C[C[C[C[C[C\dt
+\d students
+[A
+[?2004l          List of relations
+ Schema |   Name   | Type  |  Owner   
+--------+----------+-------+----------
+ public | students | table | postgres
+(1 row)
+
+[?1h=                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                    Default                    
+------------+------------------------+-----------+----------+------------------- ---------------------------
+ student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass)
+ name       | character varying(50)  |           |          | 
+ email      | character varying(100) |           |          | 
+ faculty    | character varying(20)  |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+
+[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[?1l>[?2004hlab4db-# [7m-- Correct SQL syntax[27m
+[7mSELECT name, email FROM students WHERE faculty = 'COM-25';[27m
+[A[A[C[C[C[C[C[C[C[C[C-- Correct SQL syntax
+SELECT name, email FROM students WHERE faculty = 'COM-25';[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C                     
+
+[?2004lERROR:  syntax error at or near "t"
+LINE 1: t
+        ^
+[?2004hlab4db=# [7mSELECT name, email FROM students WHERE faculty = 'COM-25';[27m
+[A[C[C[C[C[C[C[C[C[CSELECT name, email FROM students WHERE faculty = 'COM-25';
+[A
+[?2004l  name   |        email        
+---------+---------------------
+ Alymbek | alymbek@example.com
+ Timur   | timur@example.com
+ Beka    | beka@example.com
+(3 rows)
+
+[?2004hlab4db=# [7mSELECT name, email FROM students;[27m[C[C[C[C[C[C[C[C[CSELECT name, email FROM students;
+[?2004l  name   |        email        
+---------+---------------------
+ Alymbek | alymbek@example.com
+ Timur   | timur@example.com
+ Beka    | beka@example.com
+(3 rows)
+
+[?2004hlab4db=# [7mSELECT * FROM students;[27m[C[C[C[C[C[C[C[C[CSELECT * FROM students;
+[?2004l student_id |  name   |        email        | faculty 
+------------+---------+---------------------+---------
+          1 | Alymbek | alymbek@example.com | COM-25
+          2 | Timur   | timur@example.com   | COM-25
+          3 | Beka    | beka@example.com    | COM-25
+(3 rows)
+
+[?2004hlab4db=# [7mSELECT student_id, faculty FROM students;[27m[C[C[C[C[C[C[C[C[CSELECT student_id, faculty FROM students;
+[?2004l student_id | faculty 
+------------+---------
+          1 | COM-25
+          2 | COM-25
+          3 | COM-25
+(3 rows)
+
+[?2004hlab4db=# [7mSELECT name, email FROM students WHERE name = 'Timur';[27m[C[C[C[C[C[C[C[C[CSELECT name, email FROM students WHERE name = 'Timur';
+[?2004l name  |       email       
+-------+-------------------
+ Timur | timur@example.com
+(1 row)
+
+[?2004hlab4db=# [7mSELECT name, email FROM students ORDER BY name;      -- ASC[27m
+[7mSELECT name, email FROM students ORDER BY name DESC; -- DESC[27m[A[C[C[C[C[C[C[C[C[CSELECT name, email FROM students ORDER BY name;      -- ASC
+SELECT name, email FROM students ORDER BY name DESC; -- DESC[C[K[K[K[K[K[K[K[A[5PWHERE name = 'Timur';
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CORDER BY name;      -- ASC
+SELECT name, email FROM students ORDER BY name DESC; [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C            
+
+[?2004l  name   |        email        
+---------+---------------------
+ Alymbek | alymbek@example.com
+ Beka    | beka@example.com
+ Timur   | timur@example.com
+(3 rows)
+
+  name   |        email        
+---------+---------------------
+ Timur   | timur@example.com
+ Beka    | beka@example.com
+ Alymbek | alymbek@example.com
+(3 rows)
+
+[?2004hlab4db=# [7mSELECT name, email FROM students LIMIT 2;[27m
+[A[C[C[C[C[C[C[C[C[CSELECT name, email FROM students LIMIT 2;
+[A
+[?2004l  name   |        email        
+---------+---------------------
+ Alymbek | alymbek@example.com
+ Timur   | timur@example.com
+(2 rows)
+
+[?2004hlab4db=# [7mSELECT name FROM students; [27m[C[C[C[C[C[C[C[C[CSELECT name FROM students; 
+[?2004l  name   
+---------
+ Alymbek
+ Timur
+ Beka
+(3 rows)
+
+[?2004hlab4db=# [7m\l[27m
+[7m\c lab4db[27m
+[A[A[C[C[C[C[C[C[C[C[C\l
+\c lab4db
+[A
+[?2004l[?1h=                                   List of databases
+   Name    |    Owner     | Encoding | Collate | Ctype |       Access privileges        
+-----------+--------------+----------+---------+-------+------------------------ -------
+ lab4db    | postgres     | UTF8     | C       | C     | 
+ labdb     | postgres     | UTF8     | C       | C     | 
+ postgres  | alisinajawid | UTF8     | C       | C     | 
+ template0 | alisinajawid | UTF8     | C       | C     | =c/alisinajawid               +
+           |              |          |         |       | alisinajawid=CTc/alisin ajawid
+ template1 | alisinajawid | UTF8     | C       | C     | =c/alisinajawid               +
+           |              |          |         |       | alisinajawid=CTc/alisin ajawid
+(5 rows)
+
+[7m(END)[27m[K[K[7m(END)[27m[K[K[?1l>
+
+You are now connected to database "lab4db" as user "postgres".
+[?2004hlab4db=# 
+[?2004l[?2004hlab4db=# 
+[?2004l[?2004hlab4db=# 
