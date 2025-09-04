@@ -335,4 +335,55 @@ LINE 1: t
 You are now connected to database "lab4db" as user "postgres".
 [?2004hlab4db=# 
 [?2004l[?2004hlab4db=# 
-[?2004l[?2004hlab4db=# 
+[?2004l[?2004hlab4db=# [7mmv ~/lab4.txt ~/database-/[27m
+[7mcd ~/database-[27m
+[7mgit add lab4.txt[27m
+[7mgit commit -m "Lab 4: First SQL queries (full transcript)"[27m
+[7mgit pull --rebase origin main[27m
+[7mgit push origin main[27m
+[A[A[A[A[A[A[C[C[C[C[C[C[C[C[Cmv ~/lab4.txt ~/database-/
+cd ~/database-
+git add lab4.txt
+git commit -m "Lab 4: First SQL queries (full transcript)"
+git pull --rebase origin main
+git push origin main
+[A
+[?2004l[?2004hlab4db-# \q
+[?2004l[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mmv ~/lab4.txt ~/database-/[27m
+[7mcd ~/database-[27m[K
+[7mgit add lab4.txt[27m[K
+[7mgit commit -m "Lab 4: First SQL queries (full transcript)"[27m[K
+[7mgit pull --rebase origin main[27m[K
+[7mgit push origin main[27m[K
+[K[6A[34C[27mm[27mv[27m [27m~[27m/[27ml[27ma[27mb[27m4[27m.[27mt[27mx[27mt[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[27m/[1B[27mc[27md[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ml[27ma[27mb[27m4[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mL[27ma[27mb[27m [27m4[27m:[27m [27mF[27mi[27mr[27ms[27mt[27m [27mS[27mQ[27mL[27m [27mq[27mu[27me[27mr[27mi[27me[27ms[27m [27m([27mf[27mu[27ml[27ml[27m [27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m)[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ml[27ml[27m [27m-[27m-[27mr[27me[27mb[27ma[27ms[27me[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[K[?2004l
+[main cd1edb0] Lab 4: First SQL queries (full transcript)
+ 1 file changed, 338 insertions(+)
+ create mode 100644 lab4.txt
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+To https://github.com/Alisina10/database-.git
+ [31m! [rejected]       [m main -> main (fetch first)
+[31merror: failed to push some refs to 'https://github.com/Alisina10/database-.git'
+[m[33mhint: Updates were rejected because the remote contains work that you do not[m
+[33mhint: have locally. This is usually caused by another repository pushing to[m
+[33mhint: the same ref. If you want to integrate the remote changes, use[m
+[33mhint: 'git pull' before pushing again.[m
+[33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[m
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mgit status[27m[10D[27mg[27mi[27mt[27m [27ms[27mt[27ma[27mt[27mu[27ms[?2004l
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   lab3.txt[m
+	[31mmodified:   lab3_session.txt[m
+	[31mmodified:   lab4.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mdatabase-/[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h

@@ -98,8 +98,28 @@ Indexes:
 [?2004l[?2004hlabdb=# [7m\q[27m
 [A[C[C[C[C[C[C[C[C\q
 [A
-[?2004l[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h
-[7m(END)[27m[K[K[7m(END)[27m[K[K[?1l>[?2004hlabdb=# 
-[?2004l[?2004hlabdb=# 
-[?2004l[?2004hlabdb=# [7m\q[27m
-
+[?2004l[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mmv ~/lab3.txt ~/database-/[27m
+[7mcd ~/database-[27m[K
+[7mgit add lab3.txt[27m[K
+[7mgit commit -m "Add Lab 3 transcript"[27m[K
+[7mgit pull --rebase origin main[27m[K
+[7mgit push origin main[27m[K
+[K[6A[34C[27mm[27mv[27m [27m~[27m/[27ml[27ma[27mb[27m3[27m.[27mt[27mx[27mt[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[27m/[1B[27mc[27md[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ml[27ma[27mb[27m3[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mA[27md[27md[27m [27mL[27ma[27mb[27m [27m3[27m [27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ml[27ml[27m [27m-[27m-[27mr[27me[27mb[27ma[27ms[27me[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[K[?2004l
+[main 2696d46] Add Lab 3 transcript
+ 1 file changed, 105 insertions(+)
+ create mode 100644 lab3.txt
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+aEnumerating objects: 4, done.
+Counting objects:  25% (1/4)Counting objects:  50% (2/4)Counting objects:  75% (3/4)Counting objects: 100% (4/4)Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 1.35 KiB | 1.35 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas:   0% (0/1)[Kremote: Resolving deltas: 100% (1/1)[Kremote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
+To https://github.com/Alisina10/database-.git
+   c04f136..2696d46  main -> main
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004ha1/1)[Kremote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
+To https://github.com/Alisina10/database-.git
+   c04f136..2696d46  main -> main
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004ha

@@ -1,0 +1,112 @@
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mpsql -U postgres -d postgres -h localhost -p 5[7m4[7m32[27m[K[A[31C[27mp[27ms[27mq[27ml[27m [27m-[27mU[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[27m [27m-[27md[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[27m [27m-[27mh[27m [27ml[27mo[27mc[27ma[27ml[27mh[27mo[27ms[27mt[27m [27m-[27mp[27m [27m54[27m3[27m2[?2004l
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+[?2004hpostgres=# [7mCREATE DATABASE university;[27m
+[7m\l[27m
+[7m\c university[27m
+[7m\c postgres[27m
+[7mDROP DATABASE university;[27m
+[7m\l[27m
+[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[CCREATE DATABASE university;
+\l
+\c university
+\c postgres
+DROP DATABASE university;
+\l
+[A
+[?2004lCREATE DATABASE
+[?1h=                                   List of databases
+    Name    |    Owner     | Encoding | Collate | Ctype |       Access privilege s       
+------------+--------------+----------+---------+-------+----------------------- --------
+ lab4db     | postgres     | UTF8     | C       | C     | 
+ labdb      | postgres     | UTF8     | C       | C     | 
+ postgres   | alisinajawid | UTF8     | C       | C     | 
+ template0  | alisinajawid | UTF8     | C       | C     | =c/alisinajawid               +
+            |              |          |         |       | alisinajawid=CTc/alisi najawid
+ template1  | alisinajawid | UTF8     | C       | C     | =c/alisinajawid               +
+            |              |          |         |       | alisinajawid=CTc/alisi najawid
+ university | postgres     | UTF8     | C       | C     | 
+(6 rows)
+
+[7m(END)[27m[K[K[7m(END)[27m[K[K[7m(END)[27m[K[K[K[?1l>You are now connected to database "university" as user "postgres".
+invalid integer value "university" for connection option "port"
+Previous connection kept
+[?2004huniversity=# DATABASE university
+[?2004l[?2004huniversity-# [7m\l DATABASE university[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C\l DATABASE university
+[A
+[?2004l                       List of databases
+ Name | Owner | Encoding | Collate | Ctype | Access privileges 
+------+-------+----------+---------+-------+-------------------
+(0 rows)
+
+\l: extra argument "university" ignored
+[?2004huniversity-# [7m\l[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C\l
+[A
+[?2004l[?1h=                                   List of databases
+    Name    |    Owner     | Encoding | Collate | Ctype |       Access privilege s       
+------------+--------------+----------+---------+-------+----------------------- --------
+ lab4db     | postgres     | UTF8     | C       | [7m\l[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C\l
+[A
+[?2004l[?1h=                                   List of databases
+    Name    |    Owner     | Encoding | Collate | Ctype |       Access privilege s       
+------------+--------------+----------+---------+-------+----------------------- --------
+ lab4db     | postgres     | UTF8     | C       | C     | 
+ labdb      | postgres     | UTF8     | C       | C     | 
+ postgres   | alisinajawid | UTF8     | C       | C     | 
+ template0  | alisinajawid | UTF8     | C       | C     | =c/alisinajawid          [K[7m(END)[27m[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[?1l>[?2004huniversity-# \q
+[?2004l[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mmv ~/lab5.txt ~/database-/[27m
+[7mcd ~/database-[27m[K
+[7mgit add lab5.txt[27m[K
+[7mgit commit -m "Lab 5: Databases (create, switch, drop)"[27m[K
+[7mgit pull --rebase origin main[27m[K
+[7mgit push origin main[27m[K
+[K[6A[34C[27mm[27mv[27m [27m~[27m/[27ml[27ma[27mb[27m5[27m.[27mt[27mx[27mt[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[27m/[1B[27mc[27md[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ml[27ma[27mb[27m5[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mL[27ma[27mb[27m [27m5[27m:[27m [27mD[27ma[27mt[27ma[27mb[27ma[27ms[27me[27ms[27m [27m([27mc[27mr[27me[27ma[27mt[27me[27m,[27m [27ms[27mw[27mi[27mt[27mc[27mh[27m,[27m [27md[27mr[27mo[27mp[27m)[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ml[27ml[27m [27m-[27m-[27mr[27me[27mb[27ma[27ms[27me[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[K[A[20C[A[A[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C" " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " " [?2004l[3B
+U	lab3_session.txt
+error: Committing is not possible because you have unmerged files.
+[33mhint: Fix them up in the work tree, and then use 'git add/rm <file>'[m
+[33mhint: as appropriate to mark resolution and make a commit.[m
+fatal: Exiting because of an unresolved conflict.
+error: Pulling is not possible because you have unmerged files.
+[33mhint: Fix them up in the work tree, and then use 'git add/rm <file>'[m
+[33mhint: as appropriate to mark resolution and make a commit.[m
+fatal: Exiting because of an unresolved conflict.
+Everything up-to-date
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mgit status[27m[10D[27mg[27mi[27mt[27m [27ms[27mt[27ma[27mt[27mu[27ms[?2004l
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mmodified:   lab3.txt[m
+	[32mmodified:   lab4.txt[m
+	[32mnew file:   lab5.txt[m
+
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+	[31mdeleted by us:   lab3_session.txt[m
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   lab5.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mdatabase-/[m
+
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mgit checkout --ours lab3_session.txt[27m[36D[27mg[27mi[27mt[27m [27mc[27mh[27me[27mc[27mk[27mo[27mu[27mt[27m [27m-[27m-[27mo[27mu[27mr[27ms[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[?2004l
+error: path 'lab3_session.txt' does not have our version
+[1m[7m%[27m[1m[0m              [7mgit checkout --ours lab3_session.txt[27m[36D[27mg[27mi[27mt[27m [27mc[27mh[27me[27mc[27mk[27mo[27mu[27mt[27m [27m-[27m-[27mo[27mu[27mr[27ms[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[?2004l
+error: path 'lab3_session.txt' does not have our version
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mgit checkout --ours lab3_session.txt[27m
+[7mgit add lab3_session.txt[27m[K[A[18C[27mg[27mi[27mt[27m [27mc[27mh[27me[27mc[27mk[27mo[27mu[27mt[27m [27m-[27m-[27mo[27mu[27mr[27ms[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[?2004l
+error: path 'lab3_session.txt' does not have our version
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mgit checkout --ours lab3_session.txt[27m[36D[27mg[27mi[27mt[27m [27mc[27mh[27me[27mc[27mk[27mo[27mu[27mt[27m [27m-[27m-[27mo[27mu[27mr[27ms[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[?2004l
+Updated 0 paths from the index
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mgit add lab3_session.txt[27m[24D[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[?2004l
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h

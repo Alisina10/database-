@@ -1,0 +1,69 @@
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mpsql -U postgres -d postgres -h localhost -p 5[7m4[7m32[27m[K
+[K[A[A[34C[27mp[27ms[27mq[27ml[27m [27m-[27mU[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[27m [27m-[27md[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[27m [27m-[27mh[27m [27ml[27mo[27mc[27ma[27ml[27mh[27mo[27ms[27mt[27m [27m-[27mp[27m [27m54[27m3[27m2[1B[K[?2004l
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+[?2004hpostgres=# [7m\l[27m
+[7m\c labdb[27m
+[7m\dt[27m
+[7m\d courses[27m
+[7m\q[27m
+[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C\l
+\c labdb
+\dt
+\d courses
+\q
+[A
+[?2004l[?1h=                                   List of databases
+   Name    |    Owner     | Encoding | Collate | Ctype |       Access privileges        
+-----------+--------------+----------+---------+-------+------------------------ -------
+ labdb     | postgres     | UTF8     | C       | C     | 
+ postgres  | alisinajawid | UTF8     | C       | C     | 
+ template0 | alisinajawid | UTF8     | C       | C     | =c/alisinajawid               +
+           |              |          |         |       | alisinajawid=CTc/alisin ajawid
+ template1 | alisinajawid | UTF8     | C       | C     | =c/alisinajawid               +
+           |              |          |         |       | alisinajawid=CTc/alisin ajawid
+(4 rows)
+
+[7m(END)[27m[K[K[K[?1l>You are now connected to database "labdb" as user "postgres".
+Did not find any relations.
+Did not find any relation named "courses".
+[?2004hlabdb=# xit
+[?2004l[?2004hlabdb-# 
+[?2004l[?2004hlabdb-# [7mexit[27m
+[A[C[C[C[C[C[C[C[Cexit
+[A
+[?2004lUse \q to quit.
+[?2004hlabdb-# \q
+[?2004l[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mmv ~/lab3_session.txt ~/database-/[27m
+[7mcd ~/database-[27m[K
+[7mgit add lab3_session.txt[27m[K
+[7mgit commit -m "Add Lab 3 terminal session"[27m[K
+[7mgit push origin main[27m[K
+[K[5A[34C[27mm[27mv[27m [27m~[27m/[27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[27m/[1B[27mc[27md[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mA[27md[27md[27m [27mL[27ma[27mb[27m [27m3[27m [27mt[27me[27mr[27mm[27mi[27mn[27ma[27ml[27m [27ms[27me[27ms[27ms[27mi[27mo[27mn[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[K[?2004l
+[main c04f136] Add Lab 3 terminal session
+ 1 file changed, 66 insertions(+)
+ create mode 100644 lab3_session.txt
+Enumerating objects: 4, done.
+Counting objects:  25% (1/4)Counting objects:  50% (2/4)Counting objects:  75% (3/4)Counting objects: 100% (4/4)Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 942 bytes | 942.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas:   0% (0/1)[Kremote: Resolving deltas: 100% (1/1)[Kremote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
+To https://github.com/Alisina10/database-.git
+   8734aa1..c04f136  main -> main
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h27mx[27mt[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[27m/[1B[27mc[27md[27m [27m~[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ml[27ma[27mb[27m3[27m_[27ms[27me[27ms[27ms[27mi[27mo[27mn[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mA[27md[27md[27m [27mL[27ma[27mb[27m [27m3[27m [27mt[27me[27mr[27mm[27mi[27mn[27ma[27ml[27m [27ms[27me[27ms[27ms[27mi[27mo[27mn[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[K[?2004l
+[main c04f136] Add Lab 3 terminal session
+ 1 file changed, 66 insertions(+)
+ create mode 100644 lab3_session.txt
+Enumerating objects: 4, done.
+Counting objects:  25% (1/4)Counting objects:  50% (2/4)Counting objects:  75% (3/4)Counting objects: 100% (4/4)Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 942 bytes | 942.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas:   0% (0/1)[Kremote: Resolving deltas: 100% (1/1)[Kremote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
+To https://github.com/Alisina10/database-.git
+   8734aa1..c04f136  main -> main
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h
