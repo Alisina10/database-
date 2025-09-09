@@ -1,6 +1,6 @@
-Script started on Tue Sep  9 11:58:22 2025
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mpsql -U postgres -d postgres[27m
-[K[A[34C[27mp[27ms[27mq[27ml[27m [27m-[27mU[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[27m [27m-[27md[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[1B[K[?2004l
+Script started on Tue Sep  9 12:13:16 2025
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mpsql -U postgres -d postgres[27m
+[K[A[42C[27mp[27ms[27mq[27ml[27m [27m-[27mU[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[27m [27m-[27md[27m [27mp[27mo[27ms[27mt[27mg[27mr[27me[27ms[1B[K[?2004l
 psql (14.19 (Homebrew))
 Type "help" for help.
 
@@ -16,10 +16,11 @@ Type "help" for help.
 [7m('Alice Johnson', 'alice@university.edu'),[27m
 [7m('Bob Smith', 'bob@university.edu');[27m
 
+[7m\pset pager off[27m
 [7m\dt[27m
 [7m\d+ students[27m
 [7mSELECT * FROM students;[27m
-[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[CDROP TABLE IF EXISTS students;
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[CDROP TABLE IF EXISTS students;
 
 CREATE TABLE students (
     student_id SERIAL PRIMARY KEY,
@@ -31,6 +32,7 @@ Type "help" for help.
 ('Alice Johnson', 'alice@university.edu'),
 ('Bob Smith', 'bob@university.edu');
 
+\pset pager off
 \dt
 \d+ students
 SELECT * FROM students;
@@ -38,6 +40,7 @@ Type "help" for help.
 [?2004lDROP TABLE
 CREATE TABLE
 INSERT 0 2
+Pager usage is off.
           List of relations
  Schema |   Name   | Type  |  Owner   
 --------+----------+-------+----------
@@ -45,49 +48,7 @@ INSERT 0 2
  public | students | table | postgres
 (2 rows)
 
-[?1h=                                                                     Table "publ ic.students"
-   Column   |          Type          | Collation | Nullable |                    Default                    | Storage  | Compression | Stats target | Description  
-------------+------------------------+-----------+----------+------------------- ---------------------------+----------+-------------+--------------+------------ -
- student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass) | plain    |             |              | 
- name       | character varying(100) |           | not null |                                               | extended |             |              | 
- email      | character varying(150) |           | not null |                                               | extended |             |              | 
-Indexes:
-    "students_pkey" PRIMARY KEY, btree (student_id)
-    "students_email_key" UNIQUE CONSTRAINT, btree (email)
-Access method: heap
-
-[7m(END)[27m[K[K/[Kqq[K...skipping...
-                                                                     Table "publ ic.students"
-   Column   |          Type          | Collation | Nullable |                    Default                    | Storage  | Compression | Stats target | Description  
-------------+------------------------+-----------+----------+------------------- ---------------------------+----------+-------------+--------------+------------ -
- student_id | integer                |           | not null | nextval('students_ student_id_seq'::regclass) | plain    |             |              | 
- name       | character varying(100) |           | not null |                                               | extended |             |              | 
- email      | character varying(150) |           | not null |                                               | extended |             |              | 
-Indexes:
-    "students_pkey" PRIMARY KEY, btree (student_id)
-    "students_email_key" UNIQUE CONSTRAINT, btree (email)
-Access method: heap
-
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[1m~[0m
-[7m(END)[27m[K[K[?1l>\d+: extra argument "SELECT" ignored
-\d+: extra argument "*" ignored
-\d+: extra argument "FROM" ignored
-\d+: extra argument "students;" ignored
-[?2004hpostgres=# [7m\pset pager off[27m[C[C[C[C[C[C[C[C[C[C[C\pset pager off
-[?2004lPager usage is off.
-[?2004hpostgres=# [7m\d+ students[27m\d+ students
-[?2004l                                                                     Table "public.students"
+                                                                     Table "public.students"
    Column   |          Type          | Collation | Nullable |                   Default                    | Storage  | Compression | Stats target | Description 
 ------------+------------------------+-----------+----------+----------------------------------------------+----------+-------------+--------------+-------------
  student_id | integer                |           | not null | nextval('students_student_id_seq'::regclass) | plain    |             |              | 
@@ -98,103 +59,23 @@ Indexes:
     "students_email_key" UNIQUE CONSTRAINT, btree (email)
 Access method: heap
 
-[?2004hpostgres=# [7mSELECT * FROM students;[27m[C[C[C[C[C[C[C[C[C[C[CSELECT * FROM students;
-[?2004l student_id |     name      |        email         
-------------+---------------+----------------------
-          1 | Alice Johnson | alice@university.edu
-          2 | Bob Smith     | bob@university.edu
-(2 rows)
-
+\d+: extra argument "SELECT" ignored
+\d+: extra argument "*" ignored
+\d+: extra argument "FROM" ignored
+\d+: extra argument "students;" ignored
 [?2004hpostgres=# [7m\q[27m
 [7mexit[27m
 [A[A[C[C[C[C[C[C[C[C[C[C[C\q
 exit
 [A
 [?2004l\q: extra argument "exit" ignored
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mcd /path/to/your/repo[27m
-[7mmkdir -p database/lab6[27m[K
-[7mmv ~/lab6.txt database/lab6/[27m[K
-[7mgit add database/lab6/lab6.txt[27m[K
-[7mgit commit -m "Lab 6 psql session (students table)"[27m[K
-[7mgit push origin main[27m[K
-[K[6A[34C[27mc[27md[27m [27m/[27mp[27ma[27mt[27mh[27m/[27mt[27mo[27m/[27my[27mo[27mu[27mr[27m/[27mr[27me[27mp[27mo[1B[27mm[27mk[27md[27mi[27mr[27m [27m-[27mp[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[1B[27mm[27mv[27m [27m~[27m/[27ml[27ma[27mb[27m6[27m.[27mt[27mx[27mt[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[27m/[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[27m/[27ml[27ma[27mb[27m6[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mL[27ma[27mb[27m [27m6[27m [27mp[27ms[27mq[27ml[27m [27ms[27me[27ms[27ms[27mi[27mo[27mn[27m [27m([27ms[27mt[27mu[27md[27me[27mn[27mt[27ms[27m [27mt[27ma[27mb[27ml[27me[27m)[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[K[?2004l
-cd: no such file or directory: /path/to/your/repo
-fatal: not a git repository (or any of the parent directories): .git
-fatal: not a git repository (or any of the parent directories): .git
-fatal: not a git repository (or any of the parent directories): .git
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mfind ~ -type d -name ".git" 2>/dev/null[27m
-[K[A[34C[27mf[27mi[27mn[27md[27m [27m~[27m [27m-[27mt[27my[27mp[27me[27m [27md[27m [27m-[27mn[27ma[27mm[27me[27m [27m"[27m.[27mg[27mi[27mt[27m"[27m [27m2[27m>[27m/[27md[27me[27mv[27m/[27mn[27mu[27ml[27ml[1B[K[?2004l
-/Users/alisinajawid/.vcpkg-clion/vcpkg/.git
-/Users/alisinajawid/database-/database-/.git
-/Users/alisinajawid/database-/.git
-/Users/alisinajawid/Projects/alid/.git
-/Users/alisinajawid/Projects/sligdf/.git
-/Users/alisinajawid/Projects/ali/.git
-/Users/alisinajawid/.nvm/.git
-/Users/alisinajawid/Desktop/Spring 2025/Online Poll System/.git
-/Users/alisinajawid/Desktop/Spring 2025/work class/PythonProject/.git
-/Users/alisinajawid/Desktop/Spring 2025/work class/Web developmet Task/.git
-/Users/alisinajawid/Desktop/work/2025/To-Do web/.git
-/Users/alisinajawid/Desktop/work/past/web/github/new-work/.git
-/Users/alisinajawid/Desktop/work/past/web/github/new-work-1/.git
-/Users/alisinajawid/Desktop/work/past/back-end/contact-form-app/.git
-/Users/alisinajawid/Desktop/ 3/sokoban/practice-6-Alisina10/.git
-/Users/alisinajawid/Desktop/ 3/sokoban/practice-5-Alisina10/.git
-/Users/alisinajawid/PycharmProjects/Online-Poll-System/.git
-/Users/alisinajawid/CLionProjects/simple-sokoban-project/.git
-/Users/alisinajawid/CLionProjects/practice-1-Alisina10/.git
-/Users/alisinajawid/CLionProjects/practice-7-Alisina10/.git
-/Users/alisinajawid/CLionProjects/practice-4/.git
-/Users/alisinajawid/CLionProjects/practice-2-ali/.git
-/Users/alisinajawid/CLionProjects/practice-5/.git
-/Users/alisinajawid/CLionProjects/practice-2/.git
-/Users/alisinajawid/CLionProjects/practice-2-Alisina10/.git
-/Users/alisinajawid/CLionProjects/practice-4-Alisina10/.git
-/Users/alisinajawid/CLionProjects/course-directory-Alisina10/.git
-/Users/alisinajawid/CLionProjects/practice-3-Alisina10/.git
-/Users/alisinajawid/CLionProjects/practice-8-Alisina10/.git
-/Users/alisinajawid/CLionProjects/practice-5-Alisina10/.git
-/Users/alisinajawid/Documents/GitHub/desktop-tutorial/.git
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7m/Users/alisinajawid/database-/.git[27m
-[K[A[34C[27m/[27mU[27ms[27me[27mr[27ms[27m/[27ma[27ml[27mi[27ms[27mi[27mn[27ma[27mj[27ma[27mw[27mi[27md[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[27m/[27m.[27mg[27mi[27mt[1B[K[?2004l
-zsh: permission denied: /Users/alisinajawid/database-/.git
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air ~ % [K[?2004h[7mcd /Users/alisinajawid/database-[27m
-[K[A[34C[27mc[27md[27m [27m/[27mU[27ms[27me[27mr[27ms[27m/[27ma[27ml[27mi[27ms[27mi[27mn[27ma[27mj[27ma[27mw[27mi[27md[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[1B[K[?2004l
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mmkdir -p database/lab6[27m
-[K[A[42C[27mm[27mk[27md[27mi[27mr[27m [27m-[27mp[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[1B[K[?2004l
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mmv ~/lab6.txt database/lab6/[27m
-[K[A[42C[27mm[27mv[27m [27m~[27m/[27ml[27ma[27mb[27m6[27m.[27mt[27mx[27mt[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[27m/[1B[K[?2004l
-mv: rename /Users/alisinajawid/lab6.txt to database/lab6/lab6.txt: No such file or directory
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mfind ~ -name "lab6.txt" 2>/dev/null[27m
-[K[A[42C[27mf[27mi[27mn[27md[27m [27m~[27m [27m-[27mn[27ma[27mm[27me[27m [27m"[27ml[27ma[27mb[27m6[27m.[27mt[27mx[27mt[27m"[27m [27m2[27m>[27m/[27md[27me[27mv[27m/[27mn[27mu[27ml[27ml[1B[K[?2004l
-/Users/alisinajawid/database/lab6/lab6.txt
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mmv /Users/alisinajawid/Desktop/lab6.tx[7mt[7m database/lab6/[27m[K
-[K[A[A[42C[27mm[27mv[27m [27m/[27mU[27ms[27me[27mr[27ms[27m/[27ma[27ml[27mi[27ms[27mi[27mn[27ma[27mj[27ma[27mw[27mi[27md[27m/[27mD[27me[27ms[27mk[27mt[27mo[27mp[27m/[27ml[27ma[27mb[27m6[27m.[27mt[27mxt[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[27m/[1B[K[?2004l
-mv: rename /Users/alisinajawid/Desktop/lab6.txt to database/lab6/lab6.txt: No such file or directory
-[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mgit add database/lab6/lab6.txt[27m
-[7mgit commit -m "Added Lab 6 psql session (students table)"[27m[K
-[7mgit push origin main[27m[K
-[K[3A[42C[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[27m/[27ml[27ma[27mb[27m6[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mA[27md[27md[27me[27md[27m [27mL[27ma[27mb[27m [27m6[27m [27mp[27ms[27mq[27ml[27m [27ms[27me[27ms[27ms[27mi[27mo[27mn[27m [27m([27ms[27mt[27mu[27md[27me[27mn[27mt[27ms[27m [27mt[27ma[27mb[27ml[27me[27m)[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mo[27mr[27mi[27mg[27mi[27mn[27m [27mm[27ma[27mi[27mn[1B[K[?2004l
-fatal: pathspec 'database/lab6/lab6.txt' did not match any files
-On branch main
-Your branch is up to date with 'origin/main'.
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mScript done, output file is database/l[7ma[7mb6/lab6.txt[27m[K
+[K[A[A[42C[27mS[27mc[27mr[27mi[27mp[27mt[27m [27md[27mo[27mn[27me[27m,[27m [27mo[27mu[27mt[27mp[27mu[27mt[27m [27mf[27mi[27ml[27me[27m [27mi[27ms[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27mla[27mb[27m6[27m/[27ml[27ma[27mb[27m6[27m.[27mt[27mx[27mt[1B[K[?2004l
+Script started, output file is done,
+Script: output: No such file or directory
 
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	[31mmodified:   lab5.txt[m
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	[31mdatabase-/[m
-
-no changes added to commit (use "git add" and/or "git commit -a")
-To https://github.com/Alisina10/database-.git
- [31m! [rejected]       [m main -> main (fetch first)
-[31merror: failed to push some refs to 'https://github.com/Alisina10/database-.git'
-[m[33mhint: Updates were rejected because the remote contains work that you do not[m
-[33mhint: have locally. This is usually caused by another repository pushing to[m
-[33mhint: the same ref. If you want to integrate the remote changes, use[m
-[33mhint: 'git pull' before pushing again.[m
-[33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[m
+Script done, output file is done,
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mcd /Users/alisinajawid/database-[27m[32D[27mc[27md[27m [27m/[27mU[27ms[27me[27mr[27ms[27m/[27ma[27ml[27mi[27ms[27mi[27mn[27ma[27mj[27ma[27mw[27mi[27md[27m/[27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m-[?2004l
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h[7mls -l database/lab6/lab6.txt[27m[28D[27ml[27ms[27m [27m-[27ml[27m [27md[27ma[27mt[27ma[27mb[27ma[27ms[27me[27m/[27ml[27ma[27mb[27m6[27m/[27ml[27ma[27mb[27m6[27m.[27mt[27mx[27mt[?2004l
+-rw-r--r--  1 alisinajawid  staff  4118 Sep  9 12:14 database/lab6/lab6.txt
 [1m[7m%[27m[1m[0m                                                                                ]7;file://Alis-MacBook-Air.local/Users/alisinajawid/database-[0m[27m[24m[Jalisinajawid@Alis-MacBook-Air database- % [K[?2004h
