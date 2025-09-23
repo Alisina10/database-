@@ -1,0 +1,277 @@
+alisinajawid@Alis-MacBook-Air ~ % 
+alisinajawid@Alis-MacBook-Air ~ % DROP SCHEMA IF EXISTS relations_lab CASCADE;
+CREATE SCHEMA relations_lab;
+SET search_path = relations_lab, public;
+
+zsh: command not found: DROP
+zsh: command not found: CREATE
+zsh: command not found: SET
+alisinajawid@Alis-MacBook-Air ~ % psql -U postgres -d postgres
+
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=# DROP SCHEMA IF EXISTS relations_lab CASCADE;
+CREATE SCHEMA relations_lab;
+SET search_path = relations_lab, public;
+NOTICE:  schema "relations_lab" does not exist, skipping
+DROP SCHEMA
+CREATE SCHEMA
+SET
+postgres=# CREATE TABLE app_user (
+    user_id SERIAL PRIMARY KEY,
+    email   VARCHAR(120) UNIQUE NOT NULL
+);
+
+CREATE TABLE user_profile (
+    profile_id SERIAL PRIMARY KEY,
+    user_id    INTEGER UNIQUE REFERENCES app_user(user_id) ON DELETE CASCADE,
+    full_name  VARCHAR(120),
+    bio        TEXT
+);
+
+INSERT INTO app_user (email) VALUES
+('a@site.com'), ('b@site.com');
+
+INSERT INTO user_profile (user_id, full_name, bio) VALUES
+(1,'Alice A','Loves SQL'),
+(2,'Bob B','CLI enjoyer');
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+INSERT 0 2
+postgres=# CREATE TABLE author (
+    author_id SERIAL PRIMARY KEY,
+    name      VARCHAR(120) NOT NULL
+);
+
+CREATE TABLE book (
+    book_id   SERIAL PRIMARY KEY,
+    title     VARCHAR(200) NOT NULL,
+    author_id INTEGER NOT NULL REFERENCES author(author_id) ON DELETE RESTRICT
+);
+
+INSERT INTO author (name) VALUES ('Ulan U.'), ('Mira M.');
+INSERT INTO book (title, author_id) VALUES
+('Intro to Kyrgyz Peaks',1),
+('Advanced Trekking',1),
+('Horses & Highlands',2);
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+INSERT 0 3
+postgres=# CREATE TABLE student (
+    student_id SERIAL PRIMARY KEY,
+    full_name  VARCHAR(120) NOT NULL
+);
+
+CREATE TABLE course (
+    course_id SERIAL PRIMARY KEY,
+    code      VARCHAR(20) UNIQUE NOT NULL,
+    title     VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE enrollment (
+    student_id INTEGER NOT NULL REFERENCES student(student_id) ON DELETE CASCADE,
+    course_id  INTEGER NOT NULL REFERENCES course(course_id)  ON DELETE CASCADE,
+    enrolled_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (student_id, course_id)
+);
+
+INSERT INTO student (full_name) VALUES ('Aizada A.'), ('Sanzhar S.');
+INSERT INTO course (code, title) VALUES
+('DB101','Relational Databases'),
+('PG201','PostgreSQL Deep Dive');
+
+INSERT INTO enrollment (student_id, course_id) VALUES
+(1,1),(1,2),(2,1);
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+INSERT 0 2
+INSERT 0 3
+postgres=# CREATE TABLE author_cas (
+    author_id SERIAL PRIMARY KEY,
+    name      VARCHAR(120) NOT NULL
+);
+
+CREATE TABLE book_cas (
+    book_id SERIAL PRIMARY KEY,
+    title   VARCHAR(200) NOT NULL,
+    author_id INTEGER NOT NULL REFERENCES author_cas(author_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+INSERT INTO author_cas (name) VALUES ('Temp Author');
+INSERT INTO book_cas (title, author_id) VALUES ('Temp Book 1',1),('Temp Book 2',1);
+
+-- Natural key demo
+CREATE TABLE country (
+    iso_code CHAR(2) PRIMARY KEY,
+    name     VARCHAR(80) UNIQUE NOT NULL
+);
+
+CREATE TABLE city (
+    city_id SERIAL PRIMARY KEY,
+    name VARCHAR(120) NOT NULL,
+    country_code CHAR(2) NOT NULL REFERENCES country(iso_code)
+        ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+INSERT INTO country (iso_code, name) VALUES ('KG','Kyrgyzstan');
+INSERT INTO city (name, country_code) VALUES ('Bishkek','KG'),('Osh','KG');
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 2
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 2
+postgres=# -- One-to-One
+SELECT u.user_id, u.email, p.full_name
+FROM app_user u LEFT JOIN user_profile p ON u.user_id = p.user_id;
+
+-- One-to-Many
+SELECT a.name, b.title
+FROM author a LEFT JOIN book b ON a.author_id = b.author_id;
+
+-- Many-to-Many
+SELECT s.full_name, c.code
+FROM enrollment e
+JOIN student s ON s.student_id = e.student_id
+JOIN course  c ON c.course_id  = e.course_id;
+ user_id |   email    | full_name 
+---------+------------+-----------
+       1 | a@site.com | Alice A
+       2 | b@site.com | Bob B
+(2 rows)
+
+  name   |         title         
+---------+-----------------------
+ Ulan U. | Intro to Kyrgyz Peaks
+ Ulan U. | Advanced Trekking
+ Mira M. | Horses & Highlands
+(3 rows)
+
+ full_name  | code  
+------------+-------
+ Aizada A.  | DB101
+ Aizada A.  | PG201
+ Sanzhar S. | DB101
+(3 rows)
+
+postgres=# SET search_path = relations_lab, public;
+SET
+postgres=# \dn
+\dt relations_lab.*
+       List of schemas
+     Name      |    Owner     
+---------------+--------------
+ public        | alisinajawid
+ relations_lab | postgres
+(2 rows)
+
+                List of relations
+    Schema     |     Name     | Type  |  Owner   
+---------------+--------------+-------+----------
+ relations_lab | app_user     | table | postgres
+ relations_lab | author       | table | postgres
+ relations_lab | author_cas   | table | postgres
+ relations_lab | book         | table | postgres
+ relations_lab | book_cas     | table | postgres
+ relations_lab | city         | table | postgres
+ relations_lab | country      | table | postgres
+ relations_lab | course       | table | postgres
+ relations_lab | enrollment   | table | postgres
+ relations_lab | student      | table | postgres
+ relations_lab | user_profile | table | postgres
+(11 rows)
+
+postgres=# \d app_user
+                                   Table "relations_lab.app_user"
+ Column  |          Type          | Collation | Nullable |                  Default                  
+---------+------------------------+-----------+----------+-------------------------------------------
+ user_id | integer                |           | not null | nextval('app_user_user_id_seq'::regclass)
+ email   | character varying(120) |           | not null | 
+Indexes:
+    "app_user_pkey" PRIMARY KEY, btree (user_id)
+    "app_user_email_key" UNIQUE CONSTRAINT, btree (email)
+Referenced by:
+    TABLE "user_profile" CONSTRAINT "user_profile_user_id_fkey" FOREIGN KEY (user_id) REFERENCES app_user(user_id) ON DELETE CASCADE
+
+postgres=# \d user_profile
+                                      Table "relations_lab.user_profile"
+   Column   |          Type          | Collation | Nullable |                     Default                      
+------------+------------------------+-----------+----------+--------------------------------------------------
+ profile_id | integer                |           | not null | nextval('user_profile_profile_id_seq'::regclass)
+ user_id    | integer                |           |          | 
+ full_name  | character varying(120) |           |          | 
+ bio        | text                   |           |          | 
+Indexes:
+    "user_profile_pkey" PRIMARY KEY, btree (profile_id)
+    "user_profile_user_id_key" UNIQUE CONSTRAINT, btree (user_id)
+Foreign-key constraints:
+    "user_profile_user_id_fkey" FOREIGN KEY (user_id) REFERENCES app_user(user_id) ON DELETE CASCADE
+
+postgres=# \d author
+                                     Table "relations_lab.author"
+  Column   |          Type          | Collation | Nullable |                  Default                  
+-----------+------------------------+-----------+----------+-------------------------------------------
+ author_id | integer                |           | not null | nextval('author_author_id_seq'::regclass)
+ name      | character varying(120) |           | not null | 
+Indexes:
+    "author_pkey" PRIMARY KEY, btree (author_id)
+Referenced by:
+    TABLE "book" CONSTRAINT "book_author_id_fkey" FOREIGN KEY (author_id) REFERENCES author(author_id) ON DELETE RESTRICT
+
+postgres=# \d author_cas
+\d book_cas
+\d country
+\d city
+                                     Table "relations_lab.author_cas"
+  Column   |          Type          | Collation | Nullable |                    Default                    
+-----------+------------------------+-----------+----------+-----------------------------------------------
+ author_id | integer                |           | not null | nextval('author_cas_author_id_seq'::regclass)
+ name      | character varying(120) |           | not null | 
+Indexes:
+    "author_cas_pkey" PRIMARY KEY, btree (author_id)
+Referenced by:
+    TABLE "book_cas" CONSTRAINT "book_cas_author_id_fkey" FOREIGN KEY (author_id) REFERENCES author_cas(author_id) ON UPDATE CASCADE ON DELETE CASCADE
+
+                                    Table "relations_lab.book_cas"
+  Column   |          Type          | Collation | Nullable |                  Default                  
+-----------+------------------------+-----------+----------+-------------------------------------------
+ book_id   | integer                |           | not null | nextval('book_cas_book_id_seq'::regclass)
+ title     | character varying(200) |           | not null | 
+ author_id | integer                |           | not null | 
+Indexes:
+    "book_cas_pkey" PRIMARY KEY, btree (book_id)
+Foreign-key constraints:
+    "book_cas_author_id_fkey" FOREIGN KEY (author_id) REFERENCES author_cas(author_id) ON UPDATE CASCADE ON DELETE CASCADE
+
+                   Table "relations_lab.country"
+  Column  |         Type          | Collation | Nullable | Default 
+----------+-----------------------+-----------+----------+---------
+ iso_code | character(2)          |           | not null | 
+ name     | character varying(80) |           | not null | 
+Indexes:
+    "country_pkey" PRIMARY KEY, btree (iso_code)
+    "country_name_key" UNIQUE CONSTRAINT, btree (name)
+Referenced by:
+    TABLE "city" CONSTRAINT "city_country_code_fkey" FOREIGN KEY (country_code) REFERENCES country(iso_code) ON UPDATE CASCADE ON DELETE RESTRICT
+
+                                      Table "relations_lab.city"
+    Column    |          Type          | Collation | Nullable |                Default                
+--------------+------------------------+-----------+----------+---------------------------------------
+ city_id      | integer                |           | not null | nextval('city_city_id_seq'::regclass)
+ name         | character varying(120) |           | not null | 
+ country_code | character(2)           |           | not null | 
+Indexes:
+    "city_pkey" PRIMARY KEY, btree (city_id)
+Foreign-key constraints:
+    "city_country_code_fkey" FOREIGN KEY (country_code) REFERENCES country(iso_code) ON UPDATE CASCADE ON DELETE RESTRICT
+
+postgres=# 
