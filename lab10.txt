@@ -1,0 +1,139 @@
+Last login: Tue Oct  7 11:46:44 on ttys002
+alisinajawid@Alis-MacBook-Air ~ % psql -U postgres -d postgres
+
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=# SET search_path = relations_lab, public;
+SET
+postgres=# \dn
+       List of schemas
+     Name      |    Owner     
+---------------+--------------
+ public        | alisinajawid
+ relations_lab | postgres
+(2 rows)
+
+postgres=# \dt+ relations_lab.*
+                                            List of relations
+    Schema     |     Name     | Type  |  Owner   | Persistence | Access method |    Size    | Description 
+---------------+--------------+-------+----------+-------------+---------------+------------+-------------
+ relations_lab | app_user     | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | author       | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | author_cas   | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | book         | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | book_cas     | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | city         | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | country      | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | course       | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | enrollment   | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | student      | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | user_profile | table | postgres | permanent   | heap          | 16 kB      | 
+(11 rows)
+
+postgres=# relations_lab.*   -- all indexes
+postgres-# \dv relations_lab.*   -- all views (if any)
+Did not find any relation named "relations_lab.*".
+\dv: extra argument "--" ignored
+\dv: extra argument "all" ignored
+\dv: extra argument "views" ignored
+\dv: extra argument "(if" ignored
+\dv: extra argument "any)" ignored
+postgres-# \di relations_lab.*   -- all indexes
+\dv relations_lab.*   -- all views (if any)
+                             List of relations
+    Schema     |           Name           | Type  |  Owner   |    Table     
+---------------+--------------------------+-------+----------+--------------
+ relations_lab | app_user_email_key       | index | postgres | app_user
+ relations_lab | app_user_pkey            | index | postgres | app_user
+ relations_lab | author_cas_pkey          | index | postgres | author_cas
+ relations_lab | author_pkey              | index | postgres | author
+ relations_lab | book_cas_pkey            | index | postgres | book_cas
+ relations_lab | book_pkey                | index | postgres | book
+ relations_lab | city_pkey                | index | postgres | city
+ relations_lab | country_name_key         | index | postgres | country
+ relations_lab | country_pkey             | index | postgres | country
+ relations_lab | course_code_key          | index | postgres | course
+ relations_lab | course_pkey              | index | postgres | course
+ relations_lab | enrollment_pkey          | index | postgres | enrollment
+ relations_lab | student_pkey             | index | postgres | student
+ relations_lab | user_profile_pkey        | index | postgres | user_profile
+ relations_lab | user_profile_user_id_key | index | postgres | user_profile
+(15 rows)
+
+\di: extra argument "--" ignored
+\di: extra argument "all" ignored
+\di: extra argument "indexes" ignored
+Did not find any relation named "relations_lab.*".
+\dv: extra argument "--" ignored
+\dv: extra argument "all" ignored
+\dv: extra argument "views" ignored
+\dv: extra argument "(if" ignored
+\dv: extra argument "any)" ignored
+postgres-# \dt relations_lab.*
+\dt+ relations_lab.*
+\di relations_lab.*
+\dv relations_lab.*   -- will print nothing if there are no views
+                List of relations
+    Schema     |     Name     | Type  |  Owner   
+---------------+--------------+-------+----------
+ relations_lab | app_user     | table | postgres
+ relations_lab | author       | table | postgres
+ relations_lab | author_cas   | table | postgres
+ relations_lab | book         | table | postgres
+ relations_lab | book_cas     | table | postgres
+ relations_lab | city         | table | postgres
+ relations_lab | country      | table | postgres
+ relations_lab | course       | table | postgres
+ relations_lab | enrollment   | table | postgres
+ relations_lab | student      | table | postgres
+ relations_lab | user_profile | table | postgres
+(11 rows)
+
+                                            List of relations
+    Schema     |     Name     | Type  |  Owner   | Persistence | Access method |    Size    | Description 
+---------------+--------------+-------+----------+-------------+---------------+------------+-------------
+ relations_lab | app_user     | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | author       | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | author_cas   | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | book         | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | book_cas     | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | city         | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | country      | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | course       | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | enrollment   | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | student      | table | postgres | permanent   | heap          | 8192 bytes | 
+ relations_lab | user_profile | table | postgres | permanent   | heap          | 16 kB      | 
+(11 rows)
+
+                             List of relations
+    Schema     |           Name           | Type  |  Owner   |    Table     
+---------------+--------------------------+-------+----------+--------------
+ relations_lab | app_user_email_key       | index | postgres | app_user
+ relations_lab | app_user_pkey            | index | postgres | app_user
+ relations_lab | author_cas_pkey          | index | postgres | author_cas
+ relations_lab | author_pkey              | index | postgres | author
+ relations_lab | book_cas_pkey            | index | postgres | book_cas
+ relations_lab | book_pkey                | index | postgres | book
+ relations_lab | city_pkey                | index | postgres | city
+ relations_lab | country_name_key         | index | postgres | country
+ relations_lab | country_pkey             | index | postgres | country
+ relations_lab | course_code_key          | index | postgres | course
+ relations_lab | course_pkey              | index | postgres | course
+ relations_lab | enrollment_pkey          | index | postgres | enrollment
+ relations_lab | student_pkey             | index | postgres | student
+ relations_lab | user_profile_pkey        | index | postgres | user_profile
+ relations_lab | user_profile_user_id_key | index | postgres | user_profile
+(15 rows)
+
+Did not find any relation named "relations_lab.*".
+\dv: extra argument "--" ignored
+\dv: extra argument "will" ignored
+\dv: extra argument "print" ignored
+\dv: extra argument "nothing" ignored
+\dv: extra argument "if" ignored
+\dv: extra argument "there" ignored
+\dv: extra argument "are" ignored
+\dv: extra argument "no" ignored
+\dv: extra argument "views" ignored
+postgres-# 
