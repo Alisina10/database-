@@ -1,0 +1,41 @@
+➜  ~ ls -ld ~/Desktop/postgres_lab
+
+drwxrwxrwx  2 alisinajawid  staff  64 Dec  4 13:32 /Users/alisinajawid/Desktop/postgres_lab
+➜  ~ psql -U postgres -d postgres -h localhost -p 5432
+
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=# \copy students TO '/Users/alisinajawid/Desktop/postgres_lab/students.csv' WITH CSV HEADER;
+COPY 5
+postgres=# DELETE FROM students;
+ERROR:  update or delete on table "students" violates foreign key constraint "grades_student_id_fkey" on table "grades"
+DETAIL:  Key (student_id)=(1) is still referenced from table "grades".
+postgres=# SELECT * FROM students;
+ student_id | first_name | last_name |     email      |     program      | age | birth_date | gender | grade 
+------------+------------+-----------+----------------+------------------+-----+------------+--------+-------
+          1 | Alice      | Johnson   | alice@univ.edu | Computer Science |  20 | 2002-01-01 | Female |    92
+          2 | Bob        | Smith     | bob@univ.edu   | Mathematics      |  21 | 2001-05-20 | Male   |    85
+          3 | Alice      | Johnson   | alice@uni.edu  | Computer Science |  20 |            |        |      
+          4 | Bob        | Smith     | bob@uni.edu    | Mathematics      |  22 |            |        |      
+          5 | Carol      | Davis     | carol@uni.edu  | Computer Science |  21 |            |        |      
+(5 rows)
+
+postgres=# \copy students FROM '/Users/alisinajawid/Desktop/postgres_lab/students.csv' WITH CSV HEADER;
+ERROR:  duplicate key value violates unique constraint "students_pkey"
+DETAIL:  Key (student_id)=(1) already exists.
+CONTEXT:  COPY students, line 2
+postgres=# SELECT * FROM students;
+ student_id | first_name | last_name |     email      |     program      | age | birth_date | gender | grade 
+------------+------------+-----------+----------------+------------------+-----+------------+--------+-------
+          1 | Alice      | Johnson   | alice@univ.edu | Computer Science |  20 | 2002-01-01 | Female |    92
+          2 | Bob        | Smith     | bob@univ.edu   | Mathematics      |  21 | 2001-05-20 | Male   |    85
+          3 | Alice      | Johnson   | alice@uni.edu  | Computer Science |  20 |            |        |      
+          4 | Bob        | Smith     | bob@uni.edu    | Mathematics      |  22 |            |        |      
+          5 | Carol      | Davis     | carol@uni.edu  | Computer Science |  21 |            |        |      
+(5 rows)
+
+postgres=# \copy (SELECT first_name, email FROM students WHERE program = 'Computer Science') 
+TO '/Users/alisinajawid/Desktop/postgres_lab/cs_students.csv' WITH CSV HEADER;
+COPY 3
+postgres=# \q

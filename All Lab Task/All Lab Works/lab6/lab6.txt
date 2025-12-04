@@ -1,0 +1,54 @@
+postgres=# CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    faculty VARCHAR(100)
+);
+ERROR:  relation "students" already exists
+postgres=# CREATE TABLE courses (
+    course_id SERIAL PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    student_id INT REFERENCES students(student_id)
+);
+ERROR:  relation "courses" already exists
+postgres=# \d students
+\d courses
+                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                   Default                    
+------------+------------------------+-----------+----------+----------------------------------------------
+ student_id | integer                |           | not null | nextval('students_student_id_seq'::regclass)
+ full_name  | character varying(100) |           |          | 
+ email      | character varying(100) |           |          | 
+ program    | character varying(50)  |           |          | 
+ age        | integer                |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+Referenced by:
+    TABLE "assignments" CONSTRAINT "assignments_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id)
+    TABLE "maintenance_requests" CONSTRAINT "maintenance_requests_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id)
+    TABLE "payments" CONSTRAINT "payments_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id)
+
+                                      Table "public.courses"
+   Column    |         Type          | Collation | Nullable |               Default               
+-------------+-----------------------+-----------+----------+-------------------------------------
+ id          | integer               |           | not null | nextval('courses_id_seq'::regclass)
+ course_name | character varying(50) |           |          | 
+ credits     | integer               |           |          | 
+ instructor  | character varying(50) |           |          | 
+Indexes:
+    "courses_pkey" PRIMARY KEY, btree (id)
+
+postgres=# ALTER TABLE students ADD COLUMN age INT CHECK (age >= 16);
+ERROR:  column "age" of relation "students" already exists
+postgres=# DROP TABLE IF EXISTS test_table;
+NOTICE:  table "test_table" does not exist, skipping
+DROP TABLE
+postgres=# DROP TABLE courses;
+DROP TABLE
+postgres=# CREATE TEMP TABLE temp_enrollments (
+    id SERIAL,
+    course_name VARCHAR(100)
+);
+CREATE TABLE
+postgres=# 
