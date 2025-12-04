@@ -1,0 +1,41 @@
+➜  ~ psql -h localhost -p 5432 -U postgres -d postgres
+
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=# CREATE DATABASE university;
+ERROR:  database "university" already exists
+postgres=# \c university
+You are now connected to database "university" as user "postgres".
+university=# CREATE TABLE departments (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(100),
+    email VARCHAR(100),
+    department_id INT REFERENCES departments(id)
+);
+CREATE TABLE
+CREATE TABLE
+university=# \l
+                                   List of databases
+    Name    |    Owner     | Encoding | Collate | Ctype |       Access privileges       
+------------+--------------+----------+---------+-------+-------------------------------
+ lab4db     | postgres     | UTF8     | C       | C     | 
+ labdb      | postgres     | UTF8     | C       | C     | 
+ postgres   | alisinajawid | UTF8     | C       | C     | 
+ template0  | alisinajawid | UTF8     | C       | C     | =c/alisinajawid              +
+            |              |          |         |       | alisinajawid=CTc/alisinajawid
+ template1  | alisinajawid | UTF8     | C       | C     | =c/alisinajawid              +
+            |              |          |         |       | alisinajawid=CTc/alisinajawid
+ university | postgres     | UTF8     | C       | C     | 
+(6 rows)
+
+university=# \c postgres
+You are now connected to database "postgres" as user "postgres".
+postgres=# DROP DATABASE university;
+DROP DATABASE
+postgres=# 

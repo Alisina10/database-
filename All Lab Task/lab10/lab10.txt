@@ -1,0 +1,52 @@
+postgres-# \dt
+                List of relations
+ Schema |         Name         | Type  |  Owner   
+--------+----------------------+-------+----------
+ public | assignments          | table | postgres
+ public | course_enrollments   | table | postgres
+ public | courses              | table | postgres
+ public | customers            | table | postgres
+ public | departments          | table | postgres
+ public | enrollments          | table | postgres
+ public | maintenance_requests | table | postgres
+ public | orders               | table | postgres
+ public | payments             | table | postgres
+ public | products             | table | postgres
+ public | professors           | table | postgres
+ public | rooms                | table | postgres
+ public | student              | table | postgres
+ public | students             | table | postgres
+ public | transactions         | table | postgres
+(15 rows)
+
+postgres-# \d students
+                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                   Default                    
+------------+------------------------+-----------+----------+----------------------------------------------
+ student_id | integer                |           | not null | nextval('students_student_id_seq'::regclass)
+ first_name | character varying(100) |           |          | 
+ last_name  | character varying(100) |           |          | 
+ email      | character varying(150) |           | not null | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+    "students_email_key" UNIQUE CONSTRAINT, btree (email)
+Referenced by:
+    TABLE "enrollments" CONSTRAINT "enrollments_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE
+
+postgres-# \d enrollments
+                                             Table "public.enrollments"
+     Column      |         Type          | Collation | Nullable |                      Default                       
+-----------------+-----------------------+-----------+----------+----------------------------------------------------
+ enrollment_id   | integer               |           | not null | nextval('enrollments_enrollment_id_seq'::regclass)
+ student_id      | integer               |           |          | 
+ course_id       | integer               |           |          | 
+ semester        | character varying(20) |           |          | 
+ enrollment_date | date                  |           |          | CURRENT_DATE
+Indexes:
+    "enrollments_pkey" PRIMARY KEY, btree (enrollment_id)
+    "enrollments_student_id_course_id_semester_key" UNIQUE CONSTRAINT, btree (student_id, course_id, semester)
+Foreign-key constraints:
+    "enrollments_course_id_fkey" FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
+    "enrollments_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE
+
+postgres-# 

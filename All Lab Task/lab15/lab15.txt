@@ -1,0 +1,133 @@
+postgres=# 
+postgres=# CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    age INT,
+    program VARCHAR(100)
+);
+ERROR:  relation "students" already exists
+postgres=# CREATE TABLE grades (
+    grade_id SERIAL PRIMARY KEY,
+    student_id INT REFERENCES students(student_id),
+    course VARCHAR(100),
+    score INT
+);
+CREATE TABLE
+postgres=# -- Students
+INSERT INTO students (first_name, last_name, email, age, program) VALUES
+('Alice', 'Johnson', 'alice@uni.edu', 20, 'Computer Science'),
+('Bob', 'Smith', 'bob@uni.edu', 22, 'Mathematics'),
+('Carol', 'Davis', 'carol@uni.edu', 21, 'Computer Science');
+
+-- Grades
+INSERT INTO grades (student_id, course, score) VALUES
+(1, 'Database Systems', 95),
+(1, 'Algorithms', 87),
+(2, 'Database Systems', 90),
+(2, 'Statistics', 85),
+(3, 'Database Systems', 75),
+(3, 'Statistics', 80);
+INSERT 0 3
+INSERT 0 6
+postgres=# SELECT * FROM students
+WHERE student_id IN (
+    SELECT student_id
+    FROM grades
+    WHERE course = 'Database Systems'
+);
+ student_id | first_name | last_name |     email      |     program      | age | birth_date | gender | grade 
+------------+------------+-----------+----------------+------------------+-----+------------+--------+-------
+          1 | Alice      | Johnson   | alice@univ.edu | Computer Science |  20 | 2002-01-01 | Female |    92
+          2 | Bob        | Smith     | bob@univ.edu   | Mathematics      |  21 | 2001-05-20 | Male   |    85
+          3 | Alice      | Johnson   | alice@uni.edu  | Computer Science |  20 |            |        |      
+(3 rows)
+
+postgres=# SELECT 
+    s.first_name,
+    s.last_name,
+    (
+        SELECT AVG(score)
+        FROM grades g
+        WHERE g.student_id = s.student_id
+    ) AS avg_score
+FROM students s;
+ first_name | last_name |      avg_score      
+------------+-----------+---------------------
+ Alice      | Johnson   | 91.0000000000000000
+ Bob        | Smith     | 87.5000000000000000
+ Alice      | Johnson   | 77.5000000000000000
+ Bob        | Smith     |                    
+ Carol      | Davis     |                    
+(5 rows)
+
+postgres=# SELECT 
+    s.first_name,
+    s.last_name,
+    (
+        SELECT AVG(score)
+        FROM grades g
+        WHERE g.student_id = s.student_id
+    ) AS avg_score
+FROM students s;
+ first_name | last_name |      avg_score      
+------------+-----------+---------------------
+ Alice      | Johnson   | 91.0000000000000000
+ Bob        | Smith     | 87.5000000000000000
+ Alice      | Johnson   | 77.5000000000000000
+ Bob        | Smith     |                    
+ Carol      | Davis     |                    
+(5 rows)
+
+postgres=# WITH avg_scores AS (
+    SELECT student_id, AVG(score) AS avg_score
+    FROM grades
+    GROUP BY student_id
+)
+SELECT 
+    s.first_name,
+    s.last_name,
+    a.avg_score
+FROM students s
+JOIN avg_scores a ON s.student_id = a.student_id;
+ first_name | last_name |      avg_score      
+------------+-----------+---------------------
+ Alice      | Johnson   | 77.5000000000000000
+ Bob        | Smith     | 87.5000000000000000
+ Alice      | Johnson   | 91.0000000000000000
+(3 rows)
+
+postgres=# SELECT 
+    student_id,
+    course,
+    score,
+    RANK() OVER (PARTITION BY course ORDER BY score DESC) AS rank_in_course
+FROM grades;
+ student_id |      course      | score | rank_in_course 
+------------+------------------+-------+----------------
+          1 | Algorithms       |    87 |              1
+          1 | Database Systems |    95 |              1
+          2 | Database Systems |    90 |              2
+          3 | Database Systems |    75 |              3
+          2 | Statistics       |    85 |              1
+          3 | Statistics       |    80 |              2
+(6 rows)
+
+postgres=# SELECT 
+    student_id,
+    course,
+    score,
+    SUM(score) OVER (PARTITION BY student_id ORDER BY course) AS running_total
+FROM grades;
+ student_id |      course      | score | running_total 
+------------+------------------+-------+---------------
+          1 | Algorithms       |    87 |            87
+          1 | Database Systems |    95 |           182
+          2 | Database Systems |    90 |            90
+          2 | Statistics       |    85 |           175
+          3 | Database Systems |    75 |            75
+          3 | Statistics       |    80 |           155
+(6 rows)
+
+postgres=# 
