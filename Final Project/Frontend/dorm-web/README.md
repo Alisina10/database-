@@ -20,6 +20,7 @@ Project structure
 -----------------
 Your Final Project Structure
 
+```text
 final-dorm/
 ├── Backend/
 │   ├── backup_restore.txt
